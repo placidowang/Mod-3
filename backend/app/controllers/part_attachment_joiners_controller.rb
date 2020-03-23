@@ -1,0 +1,2 @@
+class PartAttachmentJoinersController < ApplicationController
+end
