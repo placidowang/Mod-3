@@ -13,7 +13,8 @@ class AttachmentsController < ApplicationController
         newName = names.sample
         newWeight = rand(50)
 
-        Attachment.create(name: newName, weight: newWeight)
+        attachment = Attachment.create(name: newName, weight: newWeight)
+        render json: attachment
     end
     def edit
     
