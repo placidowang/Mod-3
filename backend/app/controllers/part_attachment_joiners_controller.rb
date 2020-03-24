@@ -1,19 +1,20 @@
 class PartAttachmentJoinersController < ApplicationController
   def create
-    PartAttachmentJoiner.create(part_attachment_params)
+    pa_joiner = PartAttachmentJoiner.create(part_attachment_params)
+    render json: pa_joiner
   end
 
   def edit
   end
 
   def update
-    part_attachment = PartAttachmentJoiner.find(params[:id])
-    part_attachment.update(part_attachment_params)
+    # pa_joiner = PartAttachmentJoiner.find(params[:id])
+    # pa_joiner.update(part_attachment_params)
   end
 
   def destroy
-    part_attachment = PartAttachmentJoiner.find(params[:id])
-    part_attachment.destroy
+    pa_joiner = PartAttachmentJoiner.find(params[:id])
+    pa_joiner.destroy
   end
 
   private
