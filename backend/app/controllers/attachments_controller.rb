@@ -7,6 +7,13 @@ class AttachmentsController < ApplicationController
     def show 
         render json: attachment
     end
+    def new 
+        attachment = Attachment.new
+    end
+    def create 
+        attachment = Attachment.create(params[:name] )
+      
+    end
     def edit
     
     end
@@ -17,11 +24,11 @@ class AttachmentsController < ApplicationController
         attachment.destroy
     end
     private 
-    def current_attachment()
+    def current_attachment
         attachment = Attachment.find(params[:id])
     end
     def strong_params(*args)
         params.require(:attachment).permit(*args)
-      end
+    end
    
 end
