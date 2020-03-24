@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   button.addEventListener('click',()=>{
+    debugger
     fetch("http://localhost:3000/attachments",{
       method: "POST",
       headers:{
