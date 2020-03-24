@@ -1,23 +1,27 @@
 class AttachmentsController < ApplicationController
+    before_action :current_attachment, only: [:show,:edit,:update,:delete]
     def index 
         attachments = Attachment.all
-        render json: attachments, only: [:name]
+        render json: attachments, include: [:part, :car]
     end
     def show 
-        attachment = Attachment.find(params[:id])
         render json: attachment
     end
     def edit
-        attachment = Attachment.find(params[:id])
+    
     end
     def update 
-        attachment = Attachment.find(params[:id])
-        attachment.update(name: params[:name])
+        attachment.update(strong_params(:name))
     end
     def delete 
-        attachment = Attachment.find(params[:id])
         attachment.destroy
-
     end
-    
+    private 
+    def current_attachment()
+        attachment = Attachment.find(params[:id])
+    end
+    def strong_params(*args)
+        params.require(:attachment).permit(*args)
+      end
+   
 end
