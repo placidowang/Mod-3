@@ -1,5 +1,6 @@
 class AttachmentsController < ApplicationController
     before_action :current_attachment, only: [:show,:edit,:update,:delete]
+
     def index 
         attachments = Attachment.all
         render json: attachments, include: [:part, :car]
@@ -7,12 +8,12 @@ class AttachmentsController < ApplicationController
     def show 
         render json: attachment
     end
-    def new 
-        attachment = Attachment.new
-    end
-    def create 
-        attachment = Attachment.create(params[:name] )
-      
+    def create
+        names = ["Nitro", "Spoiler", "Spikes", "Tint", "Fuzzy Dice"]
+        newName = names.sample
+        newWeight = rand(50)
+
+        Attachment.create(name: newName, weight: newWeight)
     end
     def edit
     
