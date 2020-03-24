@@ -3,7 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('button')
   
-  fetch("http://localhost:3000/cars")
+  fetch("http://localhost:3000/attachments")
   .then(resp => resp.json())
   .then(data => console.log(data))
 
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     })
     .then(resp=>resp.json())
+    .then(idk =>console.log(idk))
     // .then(resp=>resp.json())
     // .then(idk=>console.log(idk))
   })
