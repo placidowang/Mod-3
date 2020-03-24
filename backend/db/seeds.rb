@@ -16,6 +16,6 @@ c1 = Car.create(make: "Honda", model: "S2000", year: 2006, weight: 2880)
 p1 = Part.create(name: "engine", car_id: c1.id)
 p2 = Part.create(name: "wheels", car_id: c1.id)
 
-a1 = Attachment.create(name: "Nitro")
+a1 = Attachment.create(name: "Nitro", weight: 25)
 
 pa1 = PartAttachmentJoiner.create(part_id: p1.id, attachment_id: a1.id)
