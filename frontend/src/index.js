@@ -1,26 +1,26 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
-  // const h1 = document.querySelector('h1')
-
-  // h1.innerText = '??'
   const button = document.querySelector('button')
-
+  
   fetch("http://localhost:3000/attachments")
   .then(resp => resp.json())
   .then(data => console.log(data))
 
-})
-
-button.addEventListener('click',()=>{
-  fetch("http://localhost:3000/attachments",{
-    method: "POST",
-    headers:{
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-    
+  button.addEventListener('click',()=>{
+    fetch("http://localhost:3000/attachments",{
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+      
+      })
+  
     })
-
+    .then(resp=>resp.json())
+    .then(idk=>console.log(idk) )
   })
-  .then(resp=>resp.json())
-  .then(idk=>console.log(idk) )
+
 })
+
