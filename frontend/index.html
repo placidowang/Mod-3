@@ -3,7 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <title>CAR TUNER</title>
+    <link rel="stylesheet" href="./css/stylesheet.css" />
     <script src="./src/index.js"></script>
+
   </head>
 
   <body>
@@ -14,35 +16,30 @@
         
       </div>
       
-      <div class="margin flex">
-            <button type="button">Click Me!</button>
+      <div class="">
+            <button type="button">Create Attachment</button>
       </div>
     </div>
 
-
-    
     <div class="garage-page">
       <h1>Garage</h1> 
-      <div id="attachment-container">
-       <div  id="attachment-bar">
-        <style>
-          #attachment-bar{
-            height: 15vh;
-            background: GRAY;
-            display: flex;
-            overflow: hidden;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-          }
-        </style>
+      <div class="attachment-container">
+        <div id="attachment-bar">
+          <div>
+            <h3 class='attachment-name'>NITRO</h3>
+            <image class='attachment-img' src='https://www.autoguide.com/blog/wp-content/uploads/2012/10/garrett-turbocharger.jpg'>
+          </div>
+          <div>
+            <h3 class='attachment-name'>SPOILER</h3>
+            <image class='attachment-img' src='https://image.shutterstock.com/image-photo/car-part-close-detail-custom-260nw-438635593.jpg'>
+          </div>
+        </div>
       </div>
-      </div>
+    </div>
 
-
+    <div class = "attachment-img-container"></div>
     <div>
       <button type="button" id="attach-attachment">Attach Attachment</button>
-
     </div>
   </body>
 </html>
