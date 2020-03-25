@@ -1,0 +1,36 @@
+#attachment-bar {
+  height: 200px;
+  width: 100vw;
+  background: GRAY;
+  padding: 10px;
+  display: flex;
+  overflow: hidden;
+  position: fixed;
+  bottom: 0;
+}
+#attachment-bar > div {
+  margin: 10px;
+  height: 190px;
+  width: 160px;
+  background: black;
+  border-style: solid;
+  border-color: black;
+  border-size: 3px;
+  display: flex;
+  position: relative;
+  bottom: 10px
+}
+.attachment-name {
+  text-align: center;
+  font-size: 16px;
+  color: white;
+  position: relative;
+  top: -10px;
+}
+.attachment-img {
+  height: 160px;
+  width: 160px;
+  object-fit: cover;
+  position: absolute;
+  bottom: 0px;
+}
