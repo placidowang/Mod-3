@@ -6,13 +6,17 @@ document.addEventListener('DOMContentLoaded', () => {
   .then(resp => resp.json())
   .then(data => console.log(data))
 
+
+
   button.addEventListener('click',()=>{
+    debugger
     fetch("http://localhost:3000/attachments",{
       method: "POST",
       headers:{
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        
       })
     })
     .then(resp=>{
@@ -22,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(idk=>console.log(idk))
     // .catch(() => {console.error('what happened')})
   })
+  
 
   attachBtn.addEventListener('click', () => {
     fetch('http://localhost:3000/part_attachment_joiners', {
