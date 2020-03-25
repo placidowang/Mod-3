@@ -1,11 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
   const button = document.querySelector('button')
   const attachBtn = document.getElementById('attach-attachment')
-  
+  const parent_div = document.getElementById('attachment-bar')
   fetch("http://localhost:3000/attachments")
   .then(resp => resp.json())
-  .then(data => console.log(data))
+  .then(data => data.forEach(attachment =>{
+    makeAttachmentCard(attachment)
 
+  }))
+
+  const makeAttachmentCard = (attachment)=>{
+    const div = document.createElement('div')
+    const h3 = document.createElement('h3')
+    h3.className = "attachment-name"
+    h3.innerText = attachment.name
+    const img = document.createElement('img')
+    img.className = "attachment-img"
+    div.append(h3,img)
+    parent_div.append(div)
+  }
 
   button.addEventListener('click',()=>{
     // debugger
