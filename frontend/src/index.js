@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     h3.innerText = attachment.name
     const img = document.createElement('img')
     img.className = "attachment-img"
+    img.src = attachment.img_url
     div.append(h3,img)
     parent_div.append(div)
   }
