@@ -1,7 +1,11 @@
-#attachment-bar {
+body {
+  background-image: url('assets/images/mechanic_garage.jpg');
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+  #attachment-bar {
   height: 200px;
   width: 100vw;
-  background: GRAY;
+  background: rgba(0,0,0,0.8);
   padding: 10px;
   display: flex;
   overflow: hidden;
@@ -16,14 +20,14 @@
   border-style: solid;
   border-color: black;
   border-size: 3px;
-  display: flex;
+  /* display: flex; */
   position: relative;
   bottom: 10px
 }
 .attachment-name {
-  text-align: center;
   font-size: 16px;
   color: white;
+  text-align: center;
   position: relative;
   top: -10px;
 }
