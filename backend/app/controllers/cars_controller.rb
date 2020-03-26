@@ -23,15 +23,15 @@ before_action :find_car, only: [:destroy]
     if Car.all.count < 3
       case car_params[:model]  
       when "Tahoe"
-        car = Car.create(make: "Chevy", model: "Tahoe", year: 2020, weight: 5880)
+        car = Car.create(make: "Chevy", model: "Tahoe", year: 2020, weight: 5880, base_top_speed: 130, base_acceleration: 50, base_handling: 45)
       when "F-150"
-        car = Car.create(make: "Ford", model: "F-150", year: 2019, weight: 3600)  
+        car = Car.create(make: "Ford", model: "F-150", year: 2019, weight: 3600,base_top_speed: 130, base_acceleration: 50, base_handling: 45)  
       when "370z"
-        car = Car.create(make: "Nissan", model: "F-150", year: 2018, weight: 2400)
+        car = Car.create(make: "Nissan", model: "F-150", year: 2018, weight: 2400,base_top_speed: 170, base_acceleration: 60, base_handling: 55)
       when "Mustang"
-        car = Car.create(make: "Ford", model: "Mustang", year: 2019, weight: 2600)  
+        car = Car.create(make: "Ford", model: "Mustang", year: 2019, weight: 2600,base_top_speed: 180, base_acceleration: 70, base_handling: 55)  
       when "Corvette"
-        car = Car.create(make: "Chevy", model: "Corvette", year: 2015, weight: 2900)
+        car = Car.create(make: "Chevy", model: "Corvette", year: 2015, weight: 2900,base_top_speed: 200, base_acceleration: 75, base_handling: 65)
       end
     render json: car
     else 
