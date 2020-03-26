@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const attachBtn = document.getElementById('attach-attachment')
   const parent_div = document.getElementById('attachment-bar')
   const car_container_div = document.querySelector('.car-container')
+  const form = document.getElementById('add-car')
 
   fetch("http://localhost:3000/attachments")
   .then(resp => resp.json())
@@ -24,9 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   fetch("http://localhost:3000/cars")
   .then(resp => resp.json())
-  .then(car_data => car_data.forEach(car=>{
+  .then(car_data => {
+    debugger 
+    car_data["cars"].forEach(car=>{
     makeCarCard(car)
-  }))
+    
+  })})
   const makeCarCard = (car) =>{
     
     const div_car = document.createElement('div')
@@ -114,6 +118,22 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('part or attachment already has a pair')
       }
     })
+  })
+
+  form.addEventListener('submit',()=>{
+    event.preventDefault()
+    fetch("http://localhost:3000/cars",{
+      method: "POST",
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: form[0].value
+      })
+    })
+    .then(resp => resp.json())
+    .then(car =>console.log(car))
+  
   })
 
   
