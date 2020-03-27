@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
       car_parts.forEach(part=>{
         makePartCard(part,part_container_div)
       })
-    })
+
 
     specs_container.append(div, p_car_weight)
     div.append(li_car_year, li_car_make, li_car_model)
@@ -82,11 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const div_part = document.createElement('div')
     div_part.className = "part-card"
     div_part.setAttribute("data-part-id", part.id)
-    div_part.addEventListener('click', ()=>{
+    div_part.addEventListener('click', function clickOnPart(){
       console.log("SELECT ATTACHMENT")
       const div_id = document.querySelectorAll('.attachment')
-      div_id.forEach(attachment => {
-        attachment.addEventListener('click', ()=>{
+
+      div_id.forEach(attachment =>{
+        attachment.addEventListener('click', function clickOnAttachment(){
+          console.log('ATTACHMENT CLICK')
           const attach_id = attachment.dataset.attachmentId
           fetch('http://localhost:3000/part_attachment_joiners',{
             method: "POST",
@@ -106,10 +108,11 @@ document.addEventListener('DOMContentLoaded', () => {
               console.error('part or attachment already has a pair')
             }
           })
-        })
+          attachment.removeEventListener('click', clickOnAttachment)
       })
     })
-
+    div_part.removeEventListener('click', clickOnPart)
+  })
     const div = document.createElement('div')
     const h3_part_name = document.createElement('h3')
     h3_part_name.innerText = part.name
@@ -138,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // debugger
       return resp.json()
     })
-    .then(idk=>console.log(idk))
+    .then(attachment => 
+      makeAttachmentCard(attachment)
+    )
     // .catch(() => {console.error('what happened')})
   })
   
@@ -157,8 +162,21 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     })
     .then(resp => resp.json())
-    .then(car =>console.log(car))
-  })
+    .then(car => {
+      fetch("http://localhost:3000/parts",{
+        method: "POST",
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          car_id: car.id
+        })
+      }) 
+      .then(resp => resp.json())
+      .then(()=>{makeCarCard(car)})
+    }
 
-  
+    )
+  })
+ 
 })

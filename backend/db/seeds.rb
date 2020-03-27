@@ -31,3 +31,7 @@ a5 = Attachment.create(name: "STRIPES", weight: 0, img_url: 'https://static1.squ
 pa1 = PartAttachmentJoiner.create(part_id: p1.id, attachment_id: a1.id)
 pa2 = PartAttachmentJoiner.create(part_id: p3.id, attachment_id: a2.id)
 pa3 = PartAttachmentJoiner.create(part_id: p6.id, attachment_id: a4.id)
+Car.destroy_all
+Part.destroy_all
+Attachment.destroy_all
+PartAttachmentJoiner.destroy_all
