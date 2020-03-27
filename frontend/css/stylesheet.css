@@ -4,57 +4,91 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .page-name {
+  height: auto;
+  /* width: 200px; */ /* need to adjust black box but keep centered */
+  background-color: rgba(0,0,0,0.8);
+}
+.page-name p {
   font-size: 40px;
   text-align: center;
 }
+
+/* CAR CARDS */
 .car-container {
   position: fixed;
   top: 150px;
+  height: 400px;
+  overflow: visible;
+  white-space: nowrap;
 }
 .car-card {
+  text-align: right;
   background: rgba(0,0,0,0.8);
   padding: 20px;
   margin: 30px;
   height: 350px;
   width: 400px;
-  display: inline-block;
-  
+  display: inline-table;
 }
 .car-image {
-  float: right;
+  border-style: solid;
+  border-color: rgb(46, 219, 58);
+  /* float: right; */
+  position: relative;
+  right: 0px;
   height: 200px;
   width: 250px;
   object-fit: cover;
 }
-#car-card-5 {
-  display: inline-block;
-  position: absolute;
-  top: 0px;
-}
-#car-card-2 {
-  display: inline-block;
-  position: absolute;
-  top: 0px;
-  left: 450px;
-}
-#car-card-3 {
-  display: inline-block;
-  position: absolute;
-  top: 0;
-  left: 900px;
+.specs-container {
+  
 }
 .mmy li {
   font-size: 15px;
   display: inline;
+  position: relative;
+  left: 0px; /* why isn't this working */
+}
+.part-container {
+  background-color: black;
+  width: 130px;
+  height: 330px;
+  position: relative;
+  left: 0px;
+  top: -280px;
+}
+.part-card {
+  height: 100px;
+  /* width: 100px; */
+  padding: 5px;
+}
+.part-name {
+  text-align: center;
+  position: relative;
+  top: -12px;
+  font-size: 12px;
+}
+.part-image {
+  /* border-style: solid; */
+  /* border-color: rgb(46, 219, 58); */
+  position: relative;
+  top: -20px;
+  left: -5px;
+  height: 80px;
+  width: 110px;
+  object-fit: cover;
 }
 
+
+/* ATTACHMENTS */
 #attachment-bar {
   height: 200px;
   width: 100vw;
   background: rgba(0,0,0,0.8);
   padding: 10px;
   /* display: inline-grid; */
-  overflow: visible;
+  overflow: hidden;
+  white-space: nowrap;
   position: fixed;
   bottom: 0;
 }
@@ -76,7 +110,7 @@ body {
   color: white;
   text-align: center;
   position: relative;
-  top: -10px;
+  top: -12px;
 }
 .attachment-img {
   height: 160px;

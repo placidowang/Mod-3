@@ -14,12 +14,13 @@ PartAttachmentJoiner.destroy_all
 c1 = Car.create(make: "Honda", model: "S2000", year: 2006, weight: 2880, base_top_speed: 164, base_acceleration:50, base_handling: 24, img_url: 'https://cdn-w.v12soft.com/photos/U1ajuAw/12266569/r640_2_800600.jpg')
 c2 = Car.create(make: "Ford", model: "Mustang", year: 2018, weight: 3600, base_top_speed: 180,base_acceleration:60, base_handling: 34, img_url: 'https://www.smford.com/inventoryphotos/7440/1fa6p8cf7j5165851/ip/1.jpg?height=400')
 
-p1 = Part.create(name: "engine", car_id: c1.id)
-p2 = Part.create(name: "wheels", car_id: c1.id)
-p3 = Part.create(name: "rear", car_id: c1.id)
-p4 = Part.create(name: "engine", car_id: c2.id)
-p5 = Part.create(name: "wheels", car_id: c2.id)
-p6 = Part.create(name: "rear", car_id: c2.id)
+p1 = Part.create(name: "engine", car_id: c1.id, img_url: 'https://cdn.gearpatrol.com/wp-content/uploads/2017/08/A-Better-911-Engine-Singer-gear-patrol-1.jpg')
+p2 = Part.create(name: "wheels", car_id: c1.id, img_url: 'https://i.ebayimg.com/images/g/4iwAAOSwmMNcU~uv/s-l300.jpg')
+p3 = Part.create(name: "rear", car_id: c1.id, img_url: 'https://media.istockphoto.com/photos/illustration-of-generic-white-car-rear-angle-picture-id959527066?k=6&m=959527066&s=612x612&w=0&h=SpM04fWsk6WVOntU3cFhK6tCmWQYdnt7GD0rBgmXHT4=')
+p4 = Part.create(name: "engine", car_id: c2.id, img_url: 'https://cdn.gearpatrol.com/wp-content/uploads/2017/08/A-Better-911-Engine-Singer-gear-patrol-1.jpg')
+p5 = Part.create(name: "wheels", car_id: c2.id, img_url: 'https://i.ebayimg.com/images/g/4iwAAOSwmMNcU~uv/s-l300.jpg')
+p6 = Part.create(name: "rear", car_id: c2.id, img_url: 'https://media.istockphoto.com/photos/illustration-of-generic-white-car-rear-angle-picture-id959527066?k=6&m=959527066&s=612x612&w=0&h=SpM04fWsk6WVOntU3cFhK6tCmWQYdnt7GD0rBgmXHT4=')
+
 
 a1 = Attachment.create(name: "SPOILER", weight: 5, img_url: 'https://image.shutterstock.com/image-photo/car-part-close-detail-custom-260nw-438635593.jpg',change_in_top_speed: -5, change_in_acceleration: -4, change_in_handling: -10)
 a2 = Attachment.create(name: "NITRO", weight: 25, img_url: 'https://www.autoguide.com/blog/wp-content/uploads/2012/10/garrett-turbocharger.jpg',change_in_top_speed: 50, change_in_acceleration: 30, change_in_handling: -20)
