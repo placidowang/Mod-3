@@ -9,20 +9,12 @@
   </head>
 
   <body>
-    <div class="landing-page">
-      <h1>CAR TUNER</h1>
-
-      <div class="panel">
-        
-      </div>
-      
-      <div class="">
-            <button type="button">Create Attachment</button>
-      </div>
+    <div class="landing-page" style='display: none'>
+      <h1 class='page-name'>CAR TUNER</h1>
     </div>
 
     <div class="garage-page">
-      <h1>Garage</h1> 
+      <h1 class='page-name'>GARAGE</h1> 
       <label for="cars">Choose a car:</label>
       <form id ="add-car"> 
         <select id="cars">
@@ -34,22 +26,48 @@
         </select>
         <input type="submit" value= "add car"></input>
       </form>
+
       
    
       <div class="car-container">
         
+        <div class="car-card" data-car-id="32">
+          <div class="mmy">
+            <li class=" car-year">123</li>
+            <li class=" car-make">FIAT</li>
+            <li class=" car-model">SOMETHING</li>
+          </div>
+          <p class="car-stat car-weight">2412</p>
+          <div class="part-container">
+            <div class="part-card" data-part-id="1">
+              <div>
+                <h3>engine</h3>
+              </div>
+            </div>
+            <div class="part-card" data-part-id="2">
+              <div>
+                <h3>wheels</h3>
+              </div>
+            </div>
+            <div class="part-card" data-part-id="3">
+              <div>
+                <h3>rear</h3>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <div class="attachment-container">
+
         <div id="attachment-bar">
+      <button type="button">Create Attachment</button>
         
         </div>
       </div>
-     
     </div>
 
     <div class = "attachment-img-container"></div>
-    <div>
-      <button type="button" id="attach-attachment">Attach Attachment</button>
-    </div>
+
   </body>
 </html>

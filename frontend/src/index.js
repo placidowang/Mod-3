@@ -39,24 +39,29 @@ document.addEventListener('DOMContentLoaded', () => {
     div_car.className = "car-card"
     div_car.setAttribute("data-car-id", car.id)
     const div = document.createElement('div')
-    const h3_car_make = document.createElement('h3')
-    const h3_car_model = document.createElement('h3')
-    const h3_car_year = document.createElement('h3')
-    const h3_car_weight = document.createElement('h3')
+    const li_car_make = document.createElement('li')
+    const li_car_model = document.createElement('li')
+    const li_car_year = document.createElement('li')
+    const p_car_weight = document.createElement('p')
+    const img = document.createElement('img')
 
-    h3_car_make.className = "car-make"
-    h3_car_make.innerText = car.make
-    h3_car_model.className = "car-model"
-    h3_car_model.innerText = car.model
-    h3_car_year.className = "car-year"
-    h3_car_year.innerText = car.year
-    h3_car_weight.className = "car-weight"
-    h3_car_weight.innerText = car.weight
+    div.className="mmy"
+    li_car_make.className = "car-make"
+    li_car_make.innerText = car.make
+    li_car_model.className = "car-model"
+    li_car_model.innerText = car.model
+    li_car_year.className = "car-year"
+    li_car_year.innerText = car.year
+    p_car_weight.className = "car-weight"
+    p_car_weight.innerText = car.weight
+    img.src = car.img_url
+    img.className = 'car-image'
+
     fetch("http://localhost:3000/parts")
     .then(resp => resp.json())
     .then(parts_data => {
-     const car_parts = parts_data.filter(x=>{
-        return x.car_id == car.id
+      const car_parts = parts_data.filter(part=>{
+        return part.car_id === car.id
       })
     car_parts.forEach(part=>{
       makePartCard(part,part_container_div)
@@ -65,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const part_container_div = document.createElement('div')
     part_container_div.className = "part-container"
   
-    div.append(h3_car_make,h3_car_model,h3_car_year,h3_car_weight)
-    div_car.append(div,part_container_div)
+    div.append(li_car_year, li_car_make, li_car_model)
+    div_car.append(div, img, p_car_weight, part_container_div)
     car_container_div.append(div_car)
     
   }
@@ -113,7 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   button.addEventListener('click',()=>{
-  
     fetch("http://localhost:3000/attachments",{
       method: "POST",
       headers:{
@@ -147,7 +151,6 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     .then(resp => resp.json())
     .then(car =>console.log(car))
-  
   })
 
   

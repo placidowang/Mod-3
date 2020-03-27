@@ -11,8 +11,8 @@ Part.destroy_all
 Attachment.destroy_all
 PartAttachmentJoiner.destroy_all
 
-c1 = Car.create(make: "Honda", model: "S2000", year: 2006, weight: 2880, base_top_speed: 164, base_acceleration:50, base_handling: 24)
-c2 = Car.create(make: "Ford", model: "Mustang", year: 2018, weight: 3600, base_top_speed: 180,base_acceleration:60, base_handling: 34)
+c1 = Car.create(make: "Honda", model: "S2000", year: 2006, weight: 2880, base_top_speed: 164, base_acceleration:50, base_handling: 24, img_url: 'https://cdn-w.v12soft.com/photos/U1ajuAw/12266569/r640_2_800600.jpg')
+c2 = Car.create(make: "Ford", model: "Mustang", year: 2018, weight: 3600, base_top_speed: 180,base_acceleration:60, base_handling: 34, img_url: 'https://www.smford.com/inventoryphotos/7440/1fa6p8cf7j5165851/ip/1.jpg?height=400')
 
 p1 = Part.create(name: "engine", car_id: c1.id)
 p2 = Part.create(name: "wheels", car_id: c1.id)

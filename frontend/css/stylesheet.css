@@ -1,14 +1,60 @@
 body {
+  color: white;
   background-image: url('assets/images/mechanic_garage.jpg');
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-  #attachment-bar {
+.page-name {
+  font-size: 40px;
+  text-align: center;
+}
+.car-container {
+  position: fixed;
+  top: 150px;
+}
+.car-card {
+  background: rgba(0,0,0,0.8);
+  padding: 20px;
+  margin: 30px;
+  height: 350px;
+  width: 400px;
+  display: inline-block;
+  
+}
+.car-image {
+  float: right;
+  height: 200px;
+  width: 250px;
+  object-fit: cover;
+}
+#car-card-5 {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+}
+#car-card-2 {
+  display: inline-block;
+  position: absolute;
+  top: 0px;
+  left: 450px;
+}
+#car-card-3 {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 900px;
+}
+.mmy li {
+  font-size: 15px;
+  display: inline;
+}
+
+#attachment-bar {
   height: 200px;
   width: 100vw;
   background: rgba(0,0,0,0.8);
   padding: 10px;
-  display: flex;
-  overflow: hidden;
+  /* display: inline-grid; */
+  overflow: visible;
   position: fixed;
   bottom: 0;
 }
@@ -19,8 +65,9 @@ body {
   background: black;
   border-style: solid;
   border-color: black;
-  border-size: 3px;
-  /* display: flex; */
+  border-width: 3px;
+  display: inline-block;
+  overflow: visible;
   position: relative;
   bottom: 10px
 }

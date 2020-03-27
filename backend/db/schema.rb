@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_25_185644) do
+ActiveRecord::Schema.define(version: 2020_03_27_143951) do
 
   create_table "attachments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_185644) do
     t.integer "base_top_speed"
     t.integer "base_acceleration"
     t.integer "base_handling"
+    t.string "img_url"
   end
 
   create_table "part_attachment_joiners", force: :cascade do |t|
