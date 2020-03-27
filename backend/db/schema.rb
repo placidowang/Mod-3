@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_143951) do
+ActiveRecord::Schema.define(version: 2020_03_27_191527) do
 
   create_table "attachments", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_143951) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
     t.integer "car_id"
+    t.string "img_url"
   end
 
 end

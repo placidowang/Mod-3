@@ -18,10 +18,10 @@ before_action :find_car, only: [:destroy]
   end
   def new 
     car = Car.new 
-  end 
-  def create 
+  end
+  def create
     if Car.all.count < 3
-      case car_params[:model]  
+      case car_params[:model]
       when "Tahoe"
         car = Car.create(make: "Chevy", model: "Tahoe", year: 2020, weight: 5880, base_top_speed: 130, base_acceleration: 50, base_handling: 45)
       when "F-150"

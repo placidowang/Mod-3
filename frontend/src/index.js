@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div.append(h3,img)
     parent_div.append(div)
   }
+
   fetch("http://localhost:3000/cars")
   .then(resp => resp.json())
   .then(car_data => {
@@ -44,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const li_car_year = document.createElement('li')
     const p_car_weight = document.createElement('p')
     const img = document.createElement('img')
-
+    const specs_container = document.createElement('div')
+    specs_container.className = 'specs-container'
     div.className="mmy"
     li_car_make.className = "car-make"
     li_car_make.innerText = car.make
@@ -57,21 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
     img.src = car.img_url
     img.className = 'car-image'
 
-    fetch("http://localhost:3000/parts")
-    .then(resp => resp.json())
-    .then(parts_data => {
-      const car_parts = parts_data.filter(part=>{
-        return part.car_id === car.id
-      })
-    car_parts.forEach(part=>{
-      makePartCard(part,part_container_div)
-    })
-    })
     const part_container_div = document.createElement('div')
     part_container_div.className = "part-container"
-  
+    fetch("http://localhost:3000/parts")
+      .then(resp => resp.json())
+      .then(parts_data => {
+        const car_parts = parts_data.filter(part=>{
+          return part.car_id === car.id
+        })
+      car_parts.forEach(part=>{
+        makePartCard(part,part_container_div)
+      })
+    })
+
+    specs_container.append(div, p_car_weight)
     div.append(li_car_year, li_car_make, li_car_model)
-    div_car.append(div, img, p_car_weight, part_container_div)
+    div_car.append(img, specs_container, part_container_div)
     car_container_div.append(div_car)
     
   }
@@ -82,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     div_part.addEventListener('click', ()=>{
       console.log("SELECT ATTACHMENT")
       const div_id = document.querySelectorAll('.attachment')
-      div_id.forEach(attachment =>{
+      div_id.forEach(attachment => {
         attachment.addEventListener('click', ()=>{
           const attach_id = attachment.dataset.attachmentId
           fetch('http://localhost:3000/part_attachment_joiners',{
@@ -109,8 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const div = document.createElement('div')
     const h3_part_name = document.createElement('h3')
-    h3_part_name.innerText = part.name 
-    div.append(h3_part_name)
+    h3_part_name.innerText = part.name
+    h3_part_name.className = 'part-name'
+    const img = document.createElement('img')
+    img.className = 'part-image'
+    img.src = part.img_url
+    div.append(h3_part_name, img)
     div_part.append(div)
     part_container_div.append(div_part)
   }
