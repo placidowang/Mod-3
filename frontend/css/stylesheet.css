@@ -16,7 +16,7 @@ body {
 /* CAR CARDS */
 .car-container {
   position: fixed;
-  top: 150px;
+  top: 180px;
   height: 400px;
   overflow: visible;
   white-space: nowrap;
@@ -41,7 +41,7 @@ body {
   object-fit: cover;
 }
 .specs-container {
-  
+  font-size: 15px;
 }
 .mmy li {
   font-size: 15px;
@@ -55,7 +55,7 @@ body {
   height: 330px;
   position: relative;
   left: 0px;
-  top: -280px;
+  top: -375px;
 }
 .part-card {
   height: 100px;

@@ -30,12 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch("http://localhost:3000/cars")
   .then(resp => resp.json())
   .then(car_data => {
-    car_data["cars"].forEach(car=>{
-    makeCarCard(car)
-    
-  })})
-  const makeCarCard = (car) =>{
-    
+    // car_data["cars"].forEach(car=>{
+    // makeCarCard(car, car_data["specs"])
+    // })
+
+
+    let i = 0
+    while (i < car_data["cars"].length) {
+      makeCarCard(car_data["cars"][i], car_data['specs'][`car${i}`])
+      // console.log(car_data['specs'][`car${i}`])
+      i++
+    }
+  })
+
+  const makeCarCard = (car, specs = nil) =>{
+    // debugger
     const div_car = document.createElement('div')
     div_car.className = "car-card"
     div_car.setAttribute("data-car-id", car.id)
@@ -55,7 +64,23 @@ document.addEventListener('DOMContentLoaded', () => {
     li_car_year.className = "car-year"
     li_car_year.innerText = car.year
     p_car_weight.className = "car-weight"
-    p_car_weight.innerText = car.weight
+    const p_specs_top_speed = document.createElement('p')
+    const p_specs_acceleration = document.createElement('p')
+    const p_specs_handling = document.createElement('p')
+
+    if (specs) {
+      p_car_weight.innerText = `WEIGHT: ${specs['final_weight']}`
+      p_specs_top_speed.innerText = `TOP SPEED: ${specs['final_top_speed']}`
+      p_specs_acceleration.innerText = `ACCELERATION: ${specs['final_acceleration']}`
+      p_specs_handling.innerText = `HANDLING: ${specs['final_handling']}`
+    } else {
+      p_car_weight.innerText = `WEIGHT: ${car.weight}`
+      p_specs_top_speed.innerText = `TOP SPEED: ${car.base_top_seed}`
+      p_specs_acceleration.innerText = `ACCELERATION: ${car.base_acceleration}`
+      p_specs_handling.innerText = `HANDLING: ${car.base_handling}`
+    }
+
+    // debugger
     img.src = car.img_url
     img.className = 'car-image'
 
@@ -71,8 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
         makePartCard(part,part_container_div)
       })
 
+    })
 
-    specs_container.append(div, p_car_weight)
+
+    specs_container.append(div, p_car_weight, p_specs_top_speed, p_specs_acceleration, p_specs_handling)
+
     div.append(li_car_year, li_car_make, li_car_model)
     div_car.append(img, specs_container, part_container_div)
     car_container_div.append(div_car)
@@ -174,9 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }) 
       .then(resp => resp.json())
       .then(()=>{makeCarCard(car)})
-    }
-
-    )
+    })
   })
  
 })
