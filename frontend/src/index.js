@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const attachBtn = document.getElementById('attach-attachment')
   const parent_div = document.getElementById('attachment-bar')
   const car_container_div = document.querySelector('.car-container')
+  const form = document.getElementById('add-car')
 
   fetch("http://localhost:3000/attachments")
   .then(resp => resp.json())
@@ -12,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }))
 
   const makeAttachmentCard = (attachment)=>{
+    
     const div = document.createElement('div')
+    div.className = "attachment"
+    div.setAttribute('data-attachment-id', attachment.id)
     const h3 = document.createElement('h3')
     h3.className = "attachment-name"
     h3.innerText = attachment.name
@@ -24,9 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   fetch("http://localhost:3000/cars")
   .then(resp => resp.json())
-  .then(car_data => car_data.forEach(car=>{
+  .then(car_data => {
+    car_data["cars"].forEach(car=>{
     makeCarCard(car)
-  }))
+    
+  })})
   const makeCarCard = (car) =>{
     
     const div_car = document.createElement('div')
@@ -73,6 +79,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const div_part = document.createElement('div')
     div_part.className = "part-card"
     div_part.setAttribute("data-part-id", part.id)
+    div_part.addEventListener('click', ()=>{
+      console.log("SELECT ATTACHMENT")
+      const div_id = document.querySelectorAll('.attachment')
+      div_id.forEach(attachment =>{
+        attachment.addEventListener('click', ()=>{
+          const attach_id = attachment.dataset.attachmentId
+          fetch('http://localhost:3000/part_attachment_joiners',{
+            method: "POST",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              part_id: part.id,
+              attachment_id: parseInt(attach_id)
+            })
+          })
+          .then(resp=> resp.json())
+          .then(pa_joiner=>{
+            if (pa_joiner.id) {
+              console.log(pa_joiner)
+            } else {
+              console.error('part or attachment already has a pair')
+            }
+          })
+        })
+      })
+    })
+
     const div = document.createElement('div')
     const h3_part_name = document.createElement('h3')
     h3_part_name.innerText = part.name 
@@ -80,8 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
     div_part.append(div)
     part_container_div.append(div_part)
   }
+
+
+
   button.addEventListener('click',()=>{
-  
     fetch("http://localhost:3000/attachments",{
       method: "POST",
       headers:{
@@ -100,25 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   
 
-  attachBtn.addEventListener('click', () => { //just to test
-    fetch('http://localhost:3000/part_attachment_joiners', {
-      method: 'POST',
-      headers: {
+ 
+
+  form.addEventListener('submit',()=>{
+    event.preventDefault()
+    fetch("http://localhost:3000/cars",{
+      method: "POST",
+      headers:{
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        part_id: 2,
-        attachment_id: 2
+        model: form[0].value
       })
     })
-    .then(r => r.json())
-    .then(pa_joiner => {
-      if (pa_joiner.id) {
-        console.log(pa_joiner)
-      } else {
-        console.error('part or attachment already has a pair')
-      }
-    })
+    .then(resp => resp.json())
+    .then(car =>console.log(car))
   })
 
   

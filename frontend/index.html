@@ -11,19 +11,24 @@
   <body>
     <div class="landing-page" style='display: none'>
       <h1 class='page-name'>CAR TUNER</h1>
-
-      <div class="panel">
-        
-      </div>
-      
-
     </div>
 
     <div class="garage-page">
-      <h1 class='page-name'>GARAGE</h1>
-      <button type="button">Create Attachment</button>
-      <button type="button" id="attach-attachment">Attach Attachment</button>
+      <h1 class='page-name'>GARAGE</h1> 
+      <label for="cars">Choose a car:</label>
+      <form id ="add-car"> 
+        <select id="cars">
+          <option value="Tahoe">Tahoe</option>
+          <option value="F-150">F-150</option>
+          <option value="370z">370z</option>
+          <option value="Mustang">Mustang</option>
+          <option value="Corvette">Corvette</option>
+        </select>
+        <input type="submit" value= "add car"></input>
+      </form>
+
       
+   
       <div class="car-container">
         
         <div class="car-card" data-car-id="32">
@@ -54,14 +59,12 @@
       </div>
 
       <div class="attachment-container">
+
         <div id="attachment-bar">
-          <div>
-            <h3 class='attachment-name'>SPOILER</h3>
-            <image class='attachment-img' src='https://image.shutterstock.com/image-photo/car-part-close-detail-custom-260nw-438635593.jpg'>
-          </div>
+      <button type="button">Create Attachment</button>
+        
         </div>
       </div>
-
     </div>
 
     <div class = "attachment-img-container"></div>

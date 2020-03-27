@@ -9,7 +9,7 @@ class AttachmentsController < ApplicationController
         render json: attachment
     end
     def create
-        names = ["Nitro", "Spoiler", "Spikes", "Tint", "Fuzzy Dice"]
+        names = ["NITRO", "SPOILER", "SPIKES", "TINT", "FUZZY DICE"]
         newName = names.sample
         newWeight = rand(50)
 
