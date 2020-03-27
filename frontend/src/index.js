@@ -13,7 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }))
 
   const makeAttachmentCard = (attachment)=>{
+    
     const div = document.createElement('div')
+    div.className = "attachment"
+    div.setAttribute('data-attachment-id', attachment.id)
     const h3 = document.createElement('h3')
     h3.className = "attachment-name"
     h3.innerText = attachment.name
@@ -26,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
   fetch("http://localhost:3000/cars")
   .then(resp => resp.json())
   .then(car_data => {
-    debugger 
     car_data["cars"].forEach(car=>{
     makeCarCard(car)
     
@@ -72,6 +74,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const div_part = document.createElement('div')
     div_part.className = "part-card"
     div_part.setAttribute("data-part-id", part.id)
+    div_part.addEventListener('click', ()=>{
+      console.log("SELECT ATTACHMENT")
+      const div_id = document.querySelectorAll('.attachment')
+      div_id.forEach(attachment =>{
+        attachment.addEventListener('click', ()=>{
+          const attach_id = attachment.dataset.attachmentId
+          fetch('http://localhost:3000/part_attachment_joiners',{
+            method: "POST",
+            headers:{
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              part_id: part.id,
+              attachment_id: parseInt(attach_id)
+            })
+          })
+          .then(resp=> resp.json())
+          .then(pa_joiner=>{
+            if (pa_joiner.id) {
+              console.log(pa_joiner)
+            } else {
+              console.error('part or attachment already has a pair')
+            }
+          })
+        })
+      })
+    })
+
     const div = document.createElement('div')
     const h3_part_name = document.createElement('h3')
     h3_part_name.innerText = part.name 
@@ -79,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () => {
     div_part.append(div)
     part_container_div.append(div_part)
   }
+
+
+
   button.addEventListener('click',()=>{
   
     fetch("http://localhost:3000/attachments",{
@@ -99,26 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
   })
   
 
-  attachBtn.addEventListener('click', () => {
-    fetch('http://localhost:3000/part_attachment_joiners', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        part_id: 2,
-        attachment_id: 2
-      })
-    })
-    .then(r => r.json())
-    .then(pa_joiner => {
-      if (pa_joiner.id) {
-        console.log(pa_joiner)
-      } else {
-        console.error('part or attachment already has a pair')
-      }
-    })
-  })
+ 
 
   form.addEventListener('submit',()=>{
     event.preventDefault()
