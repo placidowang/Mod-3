@@ -11,8 +11,8 @@ Part.destroy_all
 Attachment.destroy_all
 PartAttachmentJoiner.destroy_all
 
-c1 = Car.create(make: " HONDA", model: " S2000", year: 2006, weight: 2880, base_top_speed: 164, base_acceleration:50, base_handling: 24, img_url: 'https://cdn-w.v12soft.com/photos/U1ajuAw/12266569/r640_2_800600.jpg')
-c2 = Car.create(make: " FORD", model: " MUSTANG", year: 2018, weight: 3600, base_top_speed: 180,base_acceleration:60, base_handling: 34, img_url: 'https://www.smford.com/inventoryphotos/7440/1fa6p8cf7j5165851/ip/1.jpg?height=400')
+c1 = Car.create(make: "HONDA", model: "S2000", year: 2006, weight: 2880, base_top_speed: 164, base_acceleration:50, base_handling: 24, img_url: 'https://cdn-w.v12soft.com/photos/U1ajuAw/12266569/r640_2_800600.jpg')
+c2 = Car.create(make: "FORD", model: "MUSTANG", year: 2018, weight: 3600, base_top_speed: 180,base_acceleration:60, base_handling: 34, img_url: 'https://www.smford.com/inventoryphotos/7440/1fa6p8cf7j5165851/ip/1.jpg?height=400')
 
 p1 = Part.create(name: "engine", car_id: c1.id, img_url: 'https://cdn.gearpatrol.com/wp-content/uploads/2017/08/A-Better-911-Engine-Singer-gear-patrol-1.jpg')
 p2 = Part.create(name: "wheels", car_id: c1.id, img_url: 'https://i.ebayimg.com/images/g/4iwAAOSwmMNcU~uv/s-l300.jpg')
@@ -31,7 +31,7 @@ a5 = Attachment.create(name: "STRIPES", weight: 0, img_url: 'https://static1.squ
 pa1 = PartAttachmentJoiner.create(part_id: p1.id, attachment_id: a1.id)
 pa2 = PartAttachmentJoiner.create(part_id: p3.id, attachment_id: a2.id)
 pa3 = PartAttachmentJoiner.create(part_id: p6.id, attachment_id: a4.id)
-# Car.destroy_all
-# Part.destroy_all
-# Attachment.destroy_all
-# PartAttachmentJoiner.destroy_all
+Car.destroy_all
+Part.destroy_all
+Attachment.destroy_all
+PartAttachmentJoiner.destroy_all
