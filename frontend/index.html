@@ -15,16 +15,17 @@
 
     <div class="garage-page">
       <div class='page-name'><p>GARAGE</p></div>
-      <label for="cars">Choose a car:</label>
+      <label for="cars">ADD A CAR. YOUR GARAGE CAN HOLD UP TO 3 CARS.</label>
       <form id ="add-car"> 
-        <select id="cars">
-          <option value="Tahoe">Tahoe</option>
-          <option value="F-150">F-150</option>
-          <option value="370z">370z</option>
-          <option value="Mustang">Mustang</option>
-          <option value="Corvette">Corvette</option>
+        <select id="car-dropdown">
+          <option value="Tahoe">Chevy Tahoe</option>
+          <option value="F-150">Ford F-150</option>
+          <option value="370z">Nissan 370z</option>
+          <option value="Mustang">Ford Mustang</option>
+          <option value="Corvette">Chevy Corvette</option>
+          <option value="S2000">Honda S2000</option>
         </select>
-        <input type="submit" value= "add car"></input>
+        <input type="submit" id="add-car-btn" value= "ADD CAR"></input>
       </form>
 
       
@@ -35,9 +36,7 @@
       </div>
 
       <div class="attachment-container">
-
         <div id="attachment-bar">
-      <button type="button">Create Attachment</button>
         
         </div>
       </div>

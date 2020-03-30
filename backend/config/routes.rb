@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   resources :parts
   resources :attachments
   resources :part_attachment_joiners
+
+  get '/cars/:id/specs', to: 'cars#specs'
 end
